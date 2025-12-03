@@ -8,8 +8,8 @@
 		<version>3.5.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.generation</groupId>
-	<artifactId>blogpessoal</artifactId>
+	<groupId>com.comunidade</groupId>
+	<artifactId>comunidade_renascer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>comunidade_renascer</name>
 	<description>Projeto Comunidade Renascer</description>
