@@ -8,5 +8,5 @@ import com.comunidade.renascer.model.Postagem;
 
 public interface PostagemRepository extends JpaRepository<Postagem, Long>{
 	
-	List<Postagem> findAllByTituloContainingIgnoreCase(String titulo);
+	List<Postagem> findAllByTextoContainingIgnoreCase(String texto);
 }

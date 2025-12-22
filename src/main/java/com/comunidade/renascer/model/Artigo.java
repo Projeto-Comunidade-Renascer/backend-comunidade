@@ -18,12 +18,17 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "tb_postagens")
-public class Postagem {
-
-	@Id
+@Table(name = "tb_artigos")
+public class Artigo {
+    @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+		
+	@Column(length = 100)
+	@NotBlank(message = "O atributo título é obrigatório!")
+	@Size(min = 5, max = 100, message = "O atributo título deve ter no minimo 5 e no máximo 100 caracteres.")
+	@Pattern(regexp = "^[^0-9].*", message = "O título não pode ser apenas numérico")
+	private String titulo;
 	
 	@Column(length = 1000)
 	@NotBlank(message = "O atributo texto é obrigatório!")
@@ -38,7 +43,11 @@ public class Postagem {
 	private LocalDateTime data;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("postagem")
+	@JsonIgnoreProperties("artigo")
+	private Categoria categoria;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("artigo")
 	private Usuario usuario;
 	
 	public Usuario getUsuario() {
@@ -66,6 +75,14 @@ public class Postagem {
 		this.id = id;
 	}
 
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
 	public String getTexto() {
 		return texto;
 	}
@@ -81,5 +98,12 @@ public class Postagem {
 	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
-	
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 }
